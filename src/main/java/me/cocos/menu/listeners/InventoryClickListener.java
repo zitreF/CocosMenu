@@ -13,7 +13,8 @@ public final class InventoryClickListener implements Listener {
     @EventHandler
     public void onClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
-        if (event.getView().getTopInventory().getHolder() == null || !(event.getView().getTopInventory().getHolder() instanceof MenuHolder menuHolder)) return;
+        if (!(event.getView().getTopInventory().getHolder() instanceof MenuHolder)) return;
+        MenuHolder menuHolder = (MenuHolder) event.getView().getTopInventory().getHolder();
         Menu menu = menuHolder.menu();
         Consumer<InventoryClickEvent> action = menu.getActionBySlot(event.getSlot());
         if(action != null) action.accept(event);

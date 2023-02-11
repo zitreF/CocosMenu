@@ -1,4 +1,0 @@
-name: CocosMenu
-version: '${version}'
-main: me.cocos.menu.Menu
-api-version: 1.18

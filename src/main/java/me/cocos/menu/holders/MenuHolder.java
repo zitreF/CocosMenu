@@ -8,7 +8,12 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.jetbrains.annotations.NotNull;
 
-public record MenuHolder(Menu menu) implements InventoryHolder {
+public class MenuHolder implements InventoryHolder {
+    private final Menu menu;
+
+    public MenuHolder(Menu menu) {
+        this.menu = menu;
+    }
 
     public void run(Player player, Command command) {
         if (command.permission() != null && (command.permission().isEmpty() || player.hasPermission(command.permission()))) {
@@ -21,5 +26,9 @@ public record MenuHolder(Menu menu) implements InventoryHolder {
     @Override
     public @NotNull Inventory getInventory() {
         return menu.getInventory();
+    }
+
+    public Menu menu() {
+        return menu;
     }
 }
