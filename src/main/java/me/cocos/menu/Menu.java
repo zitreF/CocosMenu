@@ -5,9 +5,13 @@ import me.cocos.menu.commands.Command;
 import me.cocos.menu.commands.CommandRegister;
 import me.cocos.menu.holders.MenuHolder;
 import me.cocos.menu.listeners.InventoryClickListener;
+import me.cocos.menu.listeners.InventoryCloseListener;
+import me.cocos.menu.listeners.InventoryDragListener;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
@@ -17,6 +21,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 
@@ -26,12 +31,17 @@ public abstract class Menu {
     private final MenuHolder holder;
     private final Map<Integer, Consumer<InventoryClickEvent>> actions;
 
+    private BiConsumer<InventoryDragEvent, Player> onInventoryDrag;
+    private BiConsumer<InventoryCloseEvent, Player> onInventoryClose;
+
     private static final Plugin plugin = JavaPlugin.getProvidingPlugin(Menu.class);
 
     static {
         PluginManager pluginManager = Bukkit.getPluginManager();
         Stream.of(
-                new InventoryClickListener()
+                new InventoryClickListener(),
+                new InventoryCloseListener(),
+                new InventoryDragListener()
         ).forEach(listener -> pluginManager.registerEvents(listener, plugin));
     }
 
@@ -74,14 +84,26 @@ public abstract class Menu {
         this.setItem(slot, item, null);
     }
 
-
-
-
     protected void setItem(int slot, ItemStack item, Consumer<InventoryClickEvent> action) {
         this.actions.put(slot, action);
         this.inventory.setItem(slot, item);
     }
 
+    public BiConsumer<InventoryDragEvent, Player> getOnInventoryDrag() {
+        return onInventoryDrag;
+    }
+
+    public void setOnInventoryDrag(BiConsumer<InventoryDragEvent, Player> onInventoryDrag) {
+        this.onInventoryDrag = onInventoryDrag;
+    }
+
+    public BiConsumer<InventoryCloseEvent, Player> getOnInventoryClose() {
+        return onInventoryClose;
+    }
+
+    public void setOnInventoryClose(BiConsumer<InventoryCloseEvent, Player> onInventoryClose) {
+        this.onInventoryClose = onInventoryClose;
+    }
 
     public MenuHolder getHolder() {
         return holder;
@@ -93,5 +115,9 @@ public abstract class Menu {
 
     public Inventory getInventory() {
         return inventory;
+    }
+
+    public Consumer<InventoryClickEvent> getActionBySlot(int slot) {
+        return actions.get(slot);
     }
 }
