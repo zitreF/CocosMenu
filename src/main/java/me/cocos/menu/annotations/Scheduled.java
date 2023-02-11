@@ -9,9 +9,9 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Scheduled {
 
-    boolean async();
-
     long delay();
 
-    long repeat();
+    long repeat() default 0;
+
+    boolean async() default false;
 }
