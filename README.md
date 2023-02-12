@@ -54,10 +54,15 @@ public class TestPlugin extends JavaPlugin {
         }
 
         @Override
+        @Scheduled(async = true, delay = 20, repeat = 20)
         public void update() {
             GuiHelper.fillBottom(getInventory(), new ItemStack(Material.BLACK_STAINED_GLASS_PANE));
             ItemBuilder builder = ItemBuilder.from(Material.PLAYER_HEAD).withSkullOwner("QLNUS");
             this.addItems(builder.buildItem());
+            this.setItem(10, new ItemStack(Material.DIRT), (event) -> {
+                Player player = (Player) event.getWhoClicked();
+                player.sendMessage("Hello world!");
+            });
         }
 
         @Override
