@@ -71,6 +71,13 @@ public abstract class Menu {
 
     public abstract void onInventoryClick(InventoryClickEvent event, Player player);
 
+    public void dispose() {
+        this.inventory.clear();
+        this.onInventoryDrag = null;
+        this.onInventoryClose = null;
+        this.actions.clear();
+    }
+
     protected void addItems(ItemStack... items) {
         this.inventory.addItem(items);
     }

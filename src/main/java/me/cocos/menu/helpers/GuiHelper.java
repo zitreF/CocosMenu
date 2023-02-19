@@ -4,6 +4,11 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 public final class GuiHelper {
+
+    private GuiHelper() {
+
+    }
+
     public static void border(Inventory inventory, ItemStack itemStack) {
         int inventorySize = inventory.getSize();
 
