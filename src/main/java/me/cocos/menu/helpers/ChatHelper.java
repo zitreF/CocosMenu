@@ -2,6 +2,7 @@ package me.cocos.menu.helpers;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
+import org.bukkit.ChatColor;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,6 +18,10 @@ public final class ChatHelper {
 
     public static Component colored(String text) {
         return LEGACY.deserialize(text);
+    }
+
+    public static String coloredText(String text) {
+        return ChatColor.translateAlternateColorCodes('&', text);
     }
 
     public static List<Component> colored(List<String> text) {

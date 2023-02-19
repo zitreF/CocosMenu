@@ -20,7 +20,7 @@ public class MenuHolder implements InventoryHolder {
             player.openInventory(menu.getInventory());
             return;
         }
-        player.sendMessage(ChatHelper.fixText(command.permissionMessage()));
+        player.sendMessage(ChatHelper.coloredText(command.permissionMessage()));
     }
 
     @Override

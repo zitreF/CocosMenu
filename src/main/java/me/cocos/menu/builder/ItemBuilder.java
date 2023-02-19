@@ -42,7 +42,7 @@ public final class ItemBuilder {
 
     @Deprecated
     public ItemBuilder withItemName(String itemName) {
-        this.meta.setDisplayName(ChatHelper.fixText(itemName));
+        this.meta.setDisplayName(ChatHelper.coloredText(itemName));
         return this;
     }
     @Deprecated
@@ -80,7 +80,7 @@ public final class ItemBuilder {
     @Deprecated
     public ItemBuilder addLore(String lore) {
         List<String> lores = this.meta.getLore() == null ? new ArrayList<>() : this.meta.getLore();
-        (lores).add(ChatHelper.fixText(lore));
+        (lores).add(ChatHelper.coloredText(lore));
         this.meta.setLore(lores);
         return this;
     }
