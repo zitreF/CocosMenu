@@ -1,5 +1,6 @@
-package me.cocos.menu.builder;
+package me.cocos.menu.builder.impl;
 
+import me.cocos.menu.builder.Builder;
 import me.cocos.menu.helpers.ChatHelper;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Color;
@@ -18,7 +19,7 @@ import java.util.stream.Collectors;
 
 import static me.cocos.menu.helpers.ChatHelper.LEGACY;
 
-public final class ItemBuilder {
+public final class ItemBuilder implements Builder<ItemStack> {
 
     private final ItemMeta meta;
     private final ItemStack itemStack;
@@ -123,8 +124,8 @@ public final class ItemBuilder {
         return this;
     }
 
-    public ItemStack buildItem() {
-        this.itemStack.setItemMeta(this.meta);
-        return this.itemStack;
+    @Override
+    public ItemStack build() {
+        return itemStack;
     }
 }

@@ -12,8 +12,7 @@ public final class InventoryDragListener implements Listener {
     @EventHandler
     public void onInventoryDrag(InventoryDragEvent event) {
         Player player = (Player) event.getWhoClicked();
-        if (!(event.getView().getTopInventory().getHolder() instanceof MenuHolder)) return;
-        MenuHolder menuHolder = (MenuHolder) event.getView().getTopInventory().getHolder();
+        if (!(event.getView().getTopInventory().getHolder() instanceof MenuHolder menuHolder)) return;
         Menu menu = menuHolder.menu();
         if (menu.getOnInventoryDrag() == null) return;
         menu.getOnInventoryDrag().accept(event, player);

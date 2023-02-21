@@ -27,7 +27,7 @@ public final class GuiHelper {
             inventory.setItem(slot, itemStack);
         }
     }
-    public void fill(Inventory inventory, ItemStack itemStack) {
+    public static void fill(Inventory inventory, ItemStack itemStack) {
         for (int i = 0; i < inventory.getSize(); i++) {
             inventory.setItem(i, itemStack);
         }

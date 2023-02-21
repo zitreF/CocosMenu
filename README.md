@@ -18,7 +18,7 @@
     <dependency>
         <groupId>me.cocos</groupId>
         <artifactId>menu</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.3-SNAPSHOT</version>
     </dependency>
 </dependencies>
 ```
@@ -31,7 +31,7 @@ repositories {
     }
 }
 dependencies {
-    implementation("me.cocos:menu:1.0-SNAPSHOT")
+    implementation("me.cocos:menu:1.3-SNAPSHOT")
 }
 ```
 
@@ -63,11 +63,9 @@ public class TestPlugin extends JavaPlugin {
                 Player player = (Player) event.getWhoClicked();
                 player.sendMessage("Hello world!");
             });
-        }
-
-        @Override
-        public void onInventoryClick(InventoryClickEvent inventoryClickEvent, Player player) {
-            inventoryClickEvent.setCancelled(true);
+            this.onInventoryClick((event, player) -> {
+                event.setCancelled(true);
+            });
         }
     }
 }

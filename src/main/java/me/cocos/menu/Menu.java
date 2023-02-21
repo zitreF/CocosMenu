@@ -33,6 +33,7 @@ public abstract class Menu {
 
     private BiConsumer<InventoryDragEvent, Player> onInventoryDrag;
     private BiConsumer<InventoryCloseEvent, Player> onInventoryClose;
+    private BiConsumer<InventoryClickEvent, Player> onInventoryClick;
 
     private static final Plugin plugin = JavaPlugin.getProvidingPlugin(Menu.class);
 
@@ -69,16 +70,15 @@ public abstract class Menu {
 
     public abstract void update();
 
-    public abstract void onInventoryClick(InventoryClickEvent event, Player player);
-
     public void dispose() {
         this.inventory.clear();
         this.onInventoryDrag = null;
         this.onInventoryClose = null;
+        this.onInventoryClick = null;
         this.actions.clear();
     }
 
-    protected void addItems(ItemStack... items) {
+    public void addItems(ItemStack... items) {
         this.inventory.addItem(items);
     }
 
@@ -87,11 +87,11 @@ public abstract class Menu {
     }
 
 
-    protected void setItem(int slot, ItemStack item) {
+    public void setItem(int slot, ItemStack item) {
         this.setItem(slot, item, null);
     }
 
-    protected void setItem(int slot, ItemStack item, Consumer<InventoryClickEvent> action) {
+    public void setItem(int slot, ItemStack item, Consumer<InventoryClickEvent> action) {
         this.actions.put(slot, action);
         this.inventory.setItem(slot, item);
     }
@@ -110,6 +110,14 @@ public abstract class Menu {
 
     public void setOnInventoryClose(BiConsumer<InventoryCloseEvent, Player> onInventoryClose) {
         this.onInventoryClose = onInventoryClose;
+    }
+
+    public BiConsumer<InventoryClickEvent, Player> getOnInventoryClick() {
+        return onInventoryClick;
+    }
+
+    public void setOnInventoryClick(BiConsumer<InventoryClickEvent, Player> onInventoryClick) {
+        this.onInventoryClick = onInventoryClick;
     }
 
     public MenuHolder getHolder() {
