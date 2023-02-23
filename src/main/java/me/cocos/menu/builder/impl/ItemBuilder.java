@@ -97,6 +97,7 @@ public final class ItemBuilder implements Builder<ItemStack> {
 
     @Override
     public ItemStack build() {
+        itemStack.setItemMeta(meta);
         return itemStack;
     }
 }
