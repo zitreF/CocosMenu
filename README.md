@@ -18,7 +18,7 @@
     <dependency>
         <groupId>me.cocos</groupId>
         <artifactId>menu</artifactId>
-        <version>1.3-SNAPSHOT</version>
+        <version>1.7-SNAPSHOT</version>
     </dependency>
 </dependencies>
 ```
@@ -31,7 +31,7 @@ repositories {
     }
 }
 dependencies {
-    implementation("me.cocos:menu:1.3-SNAPSHOT")
+    implementation("me.cocos:menu:1.7-SNAPSHOT")
 }
 ```
 
