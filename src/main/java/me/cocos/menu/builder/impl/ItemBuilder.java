@@ -43,12 +43,12 @@ public final class ItemBuilder implements Builder<ItemStack> {
         return this;
     }
 
-    public ItemBuilder lore(List<String> lore) {
+    public ItemBuilder withLore(List<String> lore) {
         this.meta.setLore(lore.stream().map(ChatHelper::coloredText).collect(Collectors.toList()));
         return this;
     }
-    public ItemBuilder lore(String... lore) {
-        return lore(Arrays.asList(lore));
+    public ItemBuilder withLore(String... lore) {
+        return withLore(Arrays.asList(lore));
     }
 
 

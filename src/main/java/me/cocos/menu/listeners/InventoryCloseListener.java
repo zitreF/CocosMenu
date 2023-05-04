@@ -14,7 +14,6 @@ public final class InventoryCloseListener implements Listener {
         Player player = (Player) event.getPlayer();
         if (!(event.getView().getTopInventory().getHolder() instanceof MenuHolder menuHolder)) return;
         Menu menu = menuHolder.menu();
-        if (menu.getOnInventoryDrag() == null) return;
-        menu.getOnInventoryClose().accept(event, player);
+        if (menu.getOnInventoryClose() != null) menu.getOnInventoryClose().accept(event, player);
     }
 }

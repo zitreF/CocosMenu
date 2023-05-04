@@ -10,6 +10,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import java.util.function.Consumer;
 
 public final class InventoryClickListener implements Listener {
+
     @EventHandler
     public void onClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
@@ -17,6 +18,6 @@ public final class InventoryClickListener implements Listener {
         Menu menu = menuHolder.menu();
         Consumer<InventoryClickEvent> action = menu.getActionBySlot(event.getSlot());
         if (action != null) action.accept(event);
-        menu.getOnInventoryClick().accept(event, player);
+        if (menu.getOnInventoryClick() != null) menu.getOnInventoryClick().accept(event, player);
     }
 }

@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "me.cocos"
-version = "1.5-SNAPSHOT"
+version = "1.7-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -30,7 +30,7 @@ dependencies {
 
 
 java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+    toolchain.languageVersion.set(JavaLanguageVersion.of(16))
 }
 tasks {
     compileJava {
