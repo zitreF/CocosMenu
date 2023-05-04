@@ -86,6 +86,11 @@ public abstract class Menu {
         this.inventory.clear();
     }
 
+    public void setItems(ItemStack item, int... slots) {
+        for (int slot : slots) {
+            this.setItem(slot, item);
+        }
+    }
 
     public void setItem(int slot, ItemStack item) {
         this.setItem(slot, item, null);

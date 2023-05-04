@@ -51,7 +51,6 @@ public final class ItemBuilder implements Builder<ItemStack> {
         return withLore(Arrays.asList(lore));
     }
 
-
     public ItemBuilder withDurability(int durability) {
         this.itemStack.setDurability((short) (this.itemStack.getType().getMaxDurability() - durability));
         return this;
