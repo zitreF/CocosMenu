@@ -19,11 +19,11 @@ public final class MenuBuilder implements Builder<Menu> {
     private final Menu menu;
 
     public MenuBuilder(MenuType menuType, String title, int rows) {
-        this.menu = switch (menuType) {
-            case SIMPLE -> new SimpleMenu(title, rows);
-            // soon
-            case PAGINATED -> null;
-        };
+       if (menuType == MenuType.SIMPLE) {
+           menu = new SimpleMenu(title, rows);
+       } else {
+           menu = null;
+       }
     }
 
     public MenuBuilder onInventoryClick(BiConsumer<InventoryClickEvent, Player> action) {
