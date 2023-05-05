@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "me.cocos"
-version = "1.9-SNAPSHOT"
+version = "2.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -22,7 +22,7 @@ repositories {
 dependencies {
     compileOnly ("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
 
-    val adventureVersion = "4.11.0"
+    val adventureVersion = "4.13.0"
     api("net.kyori:adventure-api:$adventureVersion")
     api("net.kyori:adventure-text-serializer-legacy:$adventureVersion")
     api("net.kyori:adventure-text-serializer-gson:$adventureVersion")
@@ -30,7 +30,7 @@ dependencies {
 
 
 java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(16))
+    toolchain.languageVersion.set(JavaLanguageVersion.of(8))
 }
 tasks {
     compileJava {

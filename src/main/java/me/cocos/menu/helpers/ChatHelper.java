@@ -14,7 +14,12 @@ public final class ChatHelper {
     }
 
     public static final LegacyComponentSerializer LEGACY =
-            LegacyComponentSerializer.builder().hexColors().character('&').hexCharacter('#').useUnusualXRepeatedCharacterHexFormat().build();
+            LegacyComponentSerializer.builder()
+                    .hexColors()
+                    .character('&')
+                    .hexCharacter('#')
+                    .extractUrls()
+                    .useUnusualXRepeatedCharacterHexFormat().build();
 
     public static Component colored(String text) {
         return LEGACY.deserialize(text);
