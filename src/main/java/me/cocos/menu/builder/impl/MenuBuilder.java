@@ -26,6 +26,11 @@ public final class MenuBuilder implements Builder<Menu> {
        }
     }
 
+    public MenuBuilder onUpdate(Consumer<Menu> menuConsumer) {
+        menuConsumer.accept(menu);
+        return this;
+    }
+
     public MenuBuilder onInventoryClick(BiConsumer<InventoryClickEvent, Player> action) {
         this.menu.setOnInventoryClick(action);
         return this;
@@ -38,6 +43,11 @@ public final class MenuBuilder implements Builder<Menu> {
 
     public MenuBuilder onInventoryClose(BiConsumer<InventoryCloseEvent, Player> action) {
         this.menu.setOnInventoryClose(action);
+        return this;
+    }
+
+    public MenuBuilder blockPlayerInventory(boolean value) {
+        this.menu.setBlockPlayerInventory(value);
         return this;
     }
 

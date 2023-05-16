@@ -6,6 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.PlayerInventory;
 
 import java.util.function.Consumer;
 
@@ -15,8 +16,12 @@ public final class InventoryClickListener implements Listener {
     public void onClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         if (!(event.getView().getTopInventory().getHolder() instanceof MenuHolder)) return;
-        MenuHolder menuHolder = (MenuHolder ) event.getView().getTopInventory().getHolder();
+        MenuHolder menuHolder = (MenuHolder) event.getView().getTopInventory().getHolder();
         Menu menu = menuHolder.menu();
+        if (event.getClickedInventory() instanceof PlayerInventory && menu.isBlockPlayerInventory()) {
+            event.setCancelled(true);
+            return;
+        }
         Consumer<InventoryClickEvent> action = menu.getActionBySlot(event.getSlot());
         if (action != null) action.accept(event);
         if (menu.getOnInventoryClick() != null) menu.getOnInventoryClick().accept(event, player);

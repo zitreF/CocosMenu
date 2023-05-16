@@ -34,6 +34,7 @@ public abstract class Menu {
     private BiConsumer<InventoryDragEvent, Player> onInventoryDrag;
     private BiConsumer<InventoryCloseEvent, Player> onInventoryClose;
     private BiConsumer<InventoryClickEvent, Player> onInventoryClick;
+    private boolean blockPlayerInventory;
 
     private static final Plugin plugin = JavaPlugin.getProvidingPlugin(Menu.class);
 
@@ -50,6 +51,7 @@ public abstract class Menu {
         this.holder = new MenuHolder(this);
         this.inventory = Bukkit.createInventory(holder, rows*9, title);
         this.actions = new HashMap<>();
+        this.blockPlayerInventory = true;
         try {
             Method method = this.getClass().getMethod("update");
             if (method.isAnnotationPresent(Scheduled.class)) {
@@ -123,6 +125,14 @@ public abstract class Menu {
 
     public void setOnInventoryClick(BiConsumer<InventoryClickEvent, Player> onInventoryClick) {
         this.onInventoryClick = onInventoryClick;
+    }
+
+    public boolean isBlockPlayerInventory() {
+        return blockPlayerInventory;
+    }
+
+    public void setBlockPlayerInventory(boolean blockPlayerInventory) {
+        this.blockPlayerInventory = blockPlayerInventory;
     }
 
     public MenuHolder getHolder() {
