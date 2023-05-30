@@ -49,15 +49,4 @@ publishing {
             from(components["java"])
         }
     }
-    repositories {
-        maven {
-            name = "transtv-repository"
-            url = uri("https://repo.transtv.pl/releases")
-
-            credentials {
-                username = System.getenv("TRANSTV_REPO_USERNAME")
-                password = System.getenv("TRANSTV_REPO_PASSWORD")
-            }
-        }
-    }
 }
