@@ -4,27 +4,24 @@
 
 # Maven:
 ```xml
+<repository>
+	<id>jitpack.io</id>
+	<url>https://jitpack.io</url>
+</repository>
 
-	<repositories>
-		<repository>
-		    <id>jitpack.io</id>
-		    <url>https://jitpack.io</url>
-		</repository>
-	</repositories>
-
-
-	<dependency>
-	    <groupId>com.github.zitreF</groupId>
-	    <artifactId>CocosMenu</artifactId>
-	    <version>2.4</version>
-	</dependency>
+<dependency>
+	<groupId>com.github.zitreF</groupId>
+	<artifactId>CocosMenu</artifactId>
+	<version>2.4</version>
+</dependency>
 ```
+															     
 # Gradle:
-
 ```kotlin
-		repositories {
-			maven { url 'https://jitpack.io' }
-		}
+repositories {
+	maven { url 'https://jitpack.io' }												     
+}
+
 dependencies {
     implementation 'com.github.zitreF:CocosMenu:2.4'
 }
@@ -65,3 +62,4 @@ public class TestPlugin extends JavaPlugin {
     }
 }
 ```
+
