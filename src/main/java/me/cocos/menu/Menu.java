@@ -3,6 +3,7 @@ package me.cocos.menu;
 import me.cocos.menu.annotations.Scheduled;
 import me.cocos.menu.commands.Command;
 import me.cocos.menu.commands.CommandRegister;
+import me.cocos.menu.helpers.ChatHelper;
 import me.cocos.menu.holders.MenuHolder;
 import me.cocos.menu.listeners.InventoryClickListener;
 import me.cocos.menu.listeners.InventoryCloseListener;
@@ -49,7 +50,7 @@ public abstract class Menu {
 
     public Menu(String title, int rows) {
         this.holder = new MenuHolder(this);
-        this.inventory = Bukkit.createInventory(holder, rows*9, title);
+        this.inventory = Bukkit.createInventory(holder, rows*9, ChatHelper.coloredText(title));
         this.actions = new HashMap<>();
         this.blockPlayerInventory = true;
         try {

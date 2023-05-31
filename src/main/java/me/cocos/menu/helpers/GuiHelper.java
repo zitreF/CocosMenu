@@ -6,7 +6,7 @@ import org.bukkit.inventory.ItemStack;
 public final class GuiHelper {
 
     private GuiHelper() {
-
+        throw new UnsupportedOperationException("You cannot do this!");
     }
 
     public static void border(Inventory inventory, ItemStack itemStack) {

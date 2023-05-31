@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public final class ChatHelper {
 
     private ChatHelper() {
-
+        throw new UnsupportedOperationException("You cannot do this!");
     }
 
     public static final LegacyComponentSerializer LEGACY =
