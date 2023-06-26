@@ -4,34 +4,26 @@
 
 # Maven:
 ```xml
+<repository>
+	<id>jitpack.io</id>
+	<url>https://jitpack.io</url>
+</repository>
 
-<repositories>
-    <repository>
-        <id>transtv-repository</id>
-        <name>TransTV Repository</name>
-        <url>https://repo.transtv.pl/releases</url>
-    </repository>
-</repositories>
-
-
-<dependencies>
-    <dependency>
-        <groupId>me.cocos</groupId>
-        <artifactId>menu</artifactId>
-        <version>2.2-SNAPSHOT</version>
-    </dependency>
-</dependencies>
+<dependency>
+	<groupId>com.github.zitreF</groupId>
+	<artifactId>CocosMenu</artifactId>
+	<version>2.4</version>
+</dependency>
 ```
+															     
 # Gradle:
-
 ```kotlin
 repositories {
-    maven {
-        url = uri("https://repo.transtv.pl/releases")
-    }
+	maven { url 'https://jitpack.io' }												     
 }
+
 dependencies {
-    implementation("me.cocos:menu:2.2-SNAPSHOT")
+    implementation 'com.github.zitreF:CocosMenu:2.4'
 }
 ```
 
@@ -70,3 +62,4 @@ public class TestPlugin extends JavaPlugin {
     }
 }
 ```
+
