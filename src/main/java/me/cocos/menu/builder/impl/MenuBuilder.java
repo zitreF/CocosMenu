@@ -56,8 +56,8 @@ public final class MenuBuilder implements Builder<Menu> {
         return this;
     }
 
-    public MenuBuilder setItem(int slot, ItemStack item, Consumer<InventoryClickEvent> event) {
-        menu.setItem(slot, item, event);
+    public MenuBuilder setItem(int slot, ItemStack item, BiConsumer<InventoryClickEvent, Player> event) {
+        menu.setItem(slot, item).onInventoryClick(event);
         return this;
     }
 

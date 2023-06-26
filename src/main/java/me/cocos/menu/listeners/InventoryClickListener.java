@@ -1,6 +1,7 @@
 package me.cocos.menu.listeners;
 
 import me.cocos.menu.Menu;
+import me.cocos.menu.data.MenuItem;
 import me.cocos.menu.holders.MenuHolder;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -22,8 +23,8 @@ public final class InventoryClickListener implements Listener {
             event.setCancelled(true);
             return;
         }
-        Consumer<InventoryClickEvent> action = menu.getActionBySlot(event.getSlot());
-        if (action != null) action.accept(event);
+        MenuItem action = menu.getMenuItemBySlot(event.getSlot());
+        if (action != null) action.getOnInventoryClick().accept(event, player);
         if (menu.getOnInventoryClick() != null) menu.getOnInventoryClick().accept(event, player);
     }
 }
