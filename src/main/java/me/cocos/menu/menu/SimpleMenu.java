@@ -1,4 +1,4 @@
-package me.cocos.menu.menus;
+package me.cocos.menu.menu;
 
 import me.cocos.menu.Menu;
 

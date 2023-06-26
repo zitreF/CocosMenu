@@ -1,4 +1,4 @@
-package me.cocos.menu.enums;
+package me.cocos.menu.type;
 
 public enum MenuType {
 

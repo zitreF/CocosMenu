@@ -1,4 +1,4 @@
-package me.cocos.menu.commands;
+package me.cocos.menu.command;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

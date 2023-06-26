@@ -1,4 +1,4 @@
-package me.cocos.menu.helpers;
+package me.cocos.menu.helper;
 
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;

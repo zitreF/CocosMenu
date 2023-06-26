@@ -1,7 +1,7 @@
-package me.cocos.menu.commands;
+package me.cocos.menu.command;
 
 
-import me.cocos.menu.holders.MenuHolder;
+import me.cocos.menu.holder.MenuHolder;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -9,10 +9,10 @@ import org.bukkit.entity.Player;
 public final class CommandReceiver extends Command {
 
     private final MenuHolder holder;
-    private final me.cocos.menu.commands.Command command;
+    private final me.cocos.menu.command.Command command;
 
 
-    public CommandReceiver(me.cocos.menu.commands.Command command, MenuHolder holder) {
+    public CommandReceiver(me.cocos.menu.command.Command command, MenuHolder holder) {
         super(command.name());
         this.command = command;
         this.holder = holder;

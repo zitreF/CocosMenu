@@ -1,15 +1,13 @@
-package me.cocos.menu.listeners;
+package me.cocos.menu.listener;
 
 import me.cocos.menu.Menu;
 import me.cocos.menu.data.MenuItem;
-import me.cocos.menu.holders.MenuHolder;
+import me.cocos.menu.holder.MenuHolder;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.PlayerInventory;
-
-import java.util.function.Consumer;
 
 public final class InventoryClickListener implements Listener {
 

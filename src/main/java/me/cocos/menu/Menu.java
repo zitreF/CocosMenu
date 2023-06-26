@@ -1,17 +1,15 @@
 package me.cocos.menu;
 
-import me.cocos.menu.animation.Animation;
-import me.cocos.menu.annotations.Scheduled;
-import me.cocos.menu.commands.Command;
-import me.cocos.menu.commands.CommandRegister;
+import me.cocos.menu.annotation.Scheduled;
+import me.cocos.menu.command.Command;
+import me.cocos.menu.command.CommandRegister;
 import me.cocos.menu.data.MenuItem;
-import me.cocos.menu.helpers.ChatHelper;
-import me.cocos.menu.holders.MenuHolder;
-import me.cocos.menu.listeners.InventoryClickListener;
-import me.cocos.menu.listeners.InventoryCloseListener;
-import me.cocos.menu.listeners.InventoryDragListener;
+import me.cocos.menu.helper.ChatHelper;
+import me.cocos.menu.holder.MenuHolder;
+import me.cocos.menu.listener.InventoryClickListener;
+import me.cocos.menu.listener.InventoryCloseListener;
+import me.cocos.menu.listener.InventoryDragListener;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
@@ -21,16 +19,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.stream.Stream;
 
 public abstract class Menu {
@@ -99,18 +92,18 @@ public abstract class Menu {
     public MenuItem setItems(ItemStack item, int... slots) {
         MenuItem menuItem = new MenuItem(item);
         for (int slot : slots) {
-            this.setItem(slot, menuItem);
+            this.setItem(menuItem, slot);
         }
         return menuItem;
     }
 
-    public MenuItem setItem(int slot, ItemStack item) {
+    public MenuItem setItem(ItemStack item, int slot) {
         MenuItem menuItem = new MenuItem(item);
-        this.setItem(slot, menuItem);
+        this.setItem(menuItem, slot);
         return menuItem;
     }
 
-    public void setItem(int slot, MenuItem item) {
+    public void setItem(MenuItem item, int slot) {
         this.actions.put(slot, item);
         this.inventory.setItem(slot, item.getItem());
     }

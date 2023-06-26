@@ -1,8 +1,8 @@
-package me.cocos.menu.holders;
+package me.cocos.menu.holder;
 
 import me.cocos.menu.Menu;
-import me.cocos.menu.commands.Command;
-import me.cocos.menu.helpers.ChatHelper;
+import me.cocos.menu.command.Command;
+import me.cocos.menu.helper.ChatHelper;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;

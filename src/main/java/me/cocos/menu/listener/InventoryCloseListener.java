@@ -1,7 +1,7 @@
-package me.cocos.menu.listeners;
+package me.cocos.menu.listener;
 
 import me.cocos.menu.Menu;
-import me.cocos.menu.holders.MenuHolder;
+import me.cocos.menu.holder.MenuHolder;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

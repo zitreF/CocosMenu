@@ -2,9 +2,9 @@ package me.cocos.menu.builder.impl;
 
 import me.cocos.menu.Menu;
 import me.cocos.menu.builder.Builder;
-import me.cocos.menu.enums.MenuType;
-import me.cocos.menu.helpers.GuiHelper;
-import me.cocos.menu.menus.SimpleMenu;
+import me.cocos.menu.type.MenuType;
+import me.cocos.menu.helper.GuiHelper;
+import me.cocos.menu.menu.SimpleMenu;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
@@ -56,13 +56,13 @@ public final class MenuBuilder implements Builder<Menu> {
         return this;
     }
 
-    public MenuBuilder setItem(int slot, ItemStack item, BiConsumer<InventoryClickEvent, Player> event) {
-        menu.setItem(slot, item).onInventoryClick(event);
+    public MenuBuilder setItem(ItemStack item, int slot, BiConsumer<InventoryClickEvent, Player> event) {
+        menu.setItem(item, slot).onInventoryClick(event);
         return this;
     }
 
-    public MenuBuilder setItem(int slot, ItemStack item) {
-        menu.setItem(slot, item);
+    public MenuBuilder setItem(ItemStack item, int slot) {
+        menu.setItem(item, slot);
         return this;
     }
 

@@ -1,7 +1,7 @@
 package me.cocos.menu.builder.impl;
 
 import me.cocos.menu.builder.Builder;
-import me.cocos.menu.helpers.ChatHelper;
+import me.cocos.menu.helper.ChatHelper;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;

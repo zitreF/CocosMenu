@@ -1,4 +1,4 @@
-package me.cocos.menu.annotations;
+package me.cocos.menu.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

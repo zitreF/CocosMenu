@@ -1,4 +1,4 @@
-package me.cocos.menu.commands;
+package me.cocos.menu.command;
 
 import me.cocos.menu.Menu;
 import org.bukkit.Bukkit;
