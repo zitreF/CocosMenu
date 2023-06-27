@@ -28,6 +28,7 @@ public final class Animation<T> {
 
     public void iterate() {
         if (currentIndex == maxIndex) {
+            this.getAnimation(currentIndex).apply(type);
             currentIndex = 0;
             return;
         }

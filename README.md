@@ -12,7 +12,7 @@
 <dependency>
 	<groupId>com.github.zitreF</groupId>
 	<artifactId>CocosMenu</artifactId>
-	<version>2.4</version>
+	<version>2.5</version>
 </dependency>
 ```
 															     
@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.zitreF:CocosMenu:2.4'
+    implementation 'com.github.zitreF:CocosMenu:2.5'
 }
 ```
 
@@ -37,12 +37,12 @@ public class TestPlugin extends JavaPlugin {
         new TestMenu();
     }
 
-    @Command(name = "aha", aliases = "aha2", permission = "xd.xd", permissionMessage = "&cNie posiadasz permisji!")
+    @Command(name = "test", aliases = "tescik", permission = "test.admin", permissionMessage = "&cNie posiadasz permisji!")
     public class TestMenu extends Menu {
 
         public TestMenu() {
             super("test", 3);
-            update();
+            this.update();
         }
 
         @Override
@@ -51,8 +51,7 @@ public class TestPlugin extends JavaPlugin {
             GuiHelper.fillBottom(getInventory(), new ItemStack(Material.BLACK_STAINED_GLASS_PANE));
             ItemBuilder builder = ItemBuilder.from(Material.PLAYER_HEAD).withSkullOwner("QLNUS");
             this.addItems(builder.buildItem());
-            this.setItem(10, new ItemStack(Material.DIRT), (event) -> {
-                Player player = (Player) event.getWhoClicked();
+            this.setItem(10, new ItemStack(Material.DIRT)).onInventoryClick((event, player) -> {
                 player.sendMessage("Hello world!");
             });
             this.onInventoryClick((event, player) -> {
