@@ -22,7 +22,7 @@ public final class InventoryClickListener implements Listener {
             return;
         }
         MenuItem action = menu.getMenuItemBySlot(event.getSlot());
-        if (action != null) action.getOnInventoryClick().accept(event, player);
+        if (action != null && action.getOnInventoryClick() != null) action.getOnInventoryClick().accept(event, player);
         if (menu.getOnInventoryClick() != null) menu.getOnInventoryClick().accept(event, player);
     }
 }

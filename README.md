@@ -12,7 +12,7 @@
 <dependency>
 	<groupId>com.github.zitreF</groupId>
 	<artifactId>CocosMenu</artifactId>
-	<version>2.5</version>
+	<version>2.5.2</version>
 </dependency>
 ```
 															     
@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.zitreF:CocosMenu:2.5'
+    implementation 'com.github.zitreF:CocosMenu:2.5.2'
 }
 ```
 

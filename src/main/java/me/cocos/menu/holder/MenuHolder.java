@@ -8,7 +8,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.jetbrains.annotations.NotNull;
 
-public class MenuHolder implements InventoryHolder {
+public final class MenuHolder implements InventoryHolder {
     private final Menu menu;
 
     public MenuHolder(Menu menu) {
