@@ -6,7 +6,6 @@ import me.cocos.menu.helper.ChatHelper;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
-import org.jetbrains.annotations.NotNull;
 
 public final class MenuHolder implements InventoryHolder {
     private final Menu menu;
@@ -20,11 +19,11 @@ public final class MenuHolder implements InventoryHolder {
             player.openInventory(menu.getInventory());
             return;
         }
-        player.sendMessage(ChatHelper.coloredText(command.permissionMessage()));
+        player.sendMessage(ChatHelper.colored(command.permissionMessage()));
     }
 
     @Override
-    public @NotNull Inventory getInventory() {
+    public Inventory getInventory() {
         return menu.getInventory();
     }
 

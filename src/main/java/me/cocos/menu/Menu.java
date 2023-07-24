@@ -47,7 +47,7 @@ public abstract class Menu {
 
     public Menu(String title, int rows, boolean disposable) {
         this.holder = new MenuHolder(this);
-        this.inventory = Bukkit.createInventory(holder, rows*9, ChatHelper.coloredText(title));
+        this.inventory = Bukkit.createInventory(holder, rows*9, ChatHelper.colored(title));
         this.actions = new HashMap<>();
         this.blockPlayerInventory = true;
         this.disposable = disposable;

@@ -40,12 +40,12 @@ public final class ItemBuilder implements Builder<ItemStack> {
     }
 
     public ItemBuilder withItemName(String itemName) {
-        this.meta.setDisplayName(ChatHelper.coloredText(itemName));
+        this.meta.setDisplayName(ChatHelper.colored(itemName));
         return this;
     }
 
     public ItemBuilder withLore(List<String> lore) {
-        this.meta.setLore(lore.stream().map(ChatHelper::coloredText).collect(Collectors.toList()));
+        this.meta.setLore(ChatHelper.coloredList(lore));
         return this;
     }
     public ItemBuilder withLore(String... lore) {
@@ -59,7 +59,7 @@ public final class ItemBuilder implements Builder<ItemStack> {
 
     public ItemBuilder addLore(String lore) {
         List<String> lores = this.meta.getLore() == null ? new ArrayList<>() : this.meta.getLore();
-        lores.add(ChatHelper.coloredText(lore));
+        lores.add(ChatHelper.colored(lore));
         this.meta.setLore(lores);
         return this;
     }
