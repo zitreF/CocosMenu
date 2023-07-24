@@ -18,11 +18,11 @@ public final class MenuBuilder implements Builder<Menu> {
 
     private final Menu menu;
 
-    public MenuBuilder(MenuType menuType, String title, int rows) {
+    public MenuBuilder(MenuType menuType, String title, int rows, boolean disposable) {
        if (menuType == MenuType.SIMPLE) {
-           menu = new SimpleMenu(title, rows);
+           this.menu = new SimpleMenu(title, rows, disposable);
        } else {
-           menu = null;
+           this.menu = null;
        }
     }
 
@@ -76,8 +76,8 @@ public final class MenuBuilder implements Builder<Menu> {
         return this;
     }
 
-    public static MenuBuilder from(MenuType menuType, String title, int rows) {
-        return new MenuBuilder(menuType, title, rows);
+    public static MenuBuilder from(MenuType menuType, String title, int rows, boolean disposable) {
+        return new MenuBuilder(menuType, title, rows, disposable);
     }
 
     @Override

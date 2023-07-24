@@ -26,7 +26,12 @@ public final class MenuItem {
         return onInventoryClick;
     }
 
-    public void onInventoryClick(BiConsumer<InventoryClickEvent, Player> onInventoryClick) {
+    public MenuItem onInventoryClick(BiConsumer<InventoryClickEvent, Player> onInventoryClick) {
         this.onInventoryClick = onInventoryClick;
+        return this;
+    }
+
+    public static MenuItem of(ItemStack item) {
+        return new MenuItem(item);
     }
 }

@@ -4,12 +4,7 @@ import me.cocos.menu.Menu;
 
 public final class SimpleMenu extends Menu {
 
-    public SimpleMenu(String title, int rows) {
-        super(title, rows);
-    }
-
-    @Override
-    public void update() {
-
+    public SimpleMenu(String title, int rows, boolean disposable) {
+        super(title, rows, disposable);
     }
 }

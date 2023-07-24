@@ -1,8 +1,5 @@
 package me.cocos.menu;
 
-import me.cocos.menu.annotation.Scheduled;
-import me.cocos.menu.command.Command;
-import me.cocos.menu.command.CommandRegister;
 import me.cocos.menu.data.MenuItem;
 import me.cocos.menu.helper.ChatHelper;
 import me.cocos.menu.holder.MenuHolder;
@@ -20,7 +17,6 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.BiConsumer;
@@ -36,6 +32,7 @@ public abstract class Menu {
     private BiConsumer<InventoryCloseEvent, Player> onInventoryClose;
     private BiConsumer<InventoryClickEvent, Player> onInventoryClick;
     private boolean blockPlayerInventory;
+    private final boolean disposable;
 
     public static final Plugin PLUGIN = JavaPlugin.getProvidingPlugin(Menu.class);
 
@@ -48,30 +45,13 @@ public abstract class Menu {
         ).forEach(listener -> pluginManager.registerEvents(listener, PLUGIN));
     }
 
-    public Menu(String title, int rows) {
+    public Menu(String title, int rows, boolean disposable) {
         this.holder = new MenuHolder(this);
         this.inventory = Bukkit.createInventory(holder, rows*9, ChatHelper.coloredText(title));
         this.actions = new HashMap<>();
         this.blockPlayerInventory = true;
-        try {
-            Method method = this.getClass().getMethod("update");
-            if (method.isAnnotationPresent(Scheduled.class)) {
-                Scheduled scheduled = method.getAnnotation(Scheduled.class);
-                if (scheduled.async()) {
-                    PLUGIN.getServer().getScheduler().runTaskTimerAsynchronously(PLUGIN, this::update, scheduled.delay(), scheduled.repeat());
-                } else {
-                    PLUGIN.getServer().getScheduler().runTaskTimer(PLUGIN, this::update, scheduled.delay(), scheduled.repeat());
-                }
-            }
-            if (this.getClass().isAnnotationPresent(Command.class)) {
-                CommandRegister.register(this);
-            }
-        } catch (NoSuchMethodException e) {
-            throw new RuntimeException(e);
-        }
+        this.disposable = disposable;
     }
-
-    public abstract void update();
 
     public void dispose() {
         this.inventory.clear();
@@ -79,6 +59,13 @@ public abstract class Menu {
         this.onInventoryClose = null;
         this.onInventoryClick = null;
         this.actions.clear();
+    }
+
+    public void addItems(MenuItem... items) {
+        for (MenuItem item : items) {
+            int firstEmpty = inventory.firstEmpty();
+            this.setItem(item, firstEmpty);
+        }
     }
 
     public void addItems(ItemStack... items) {
@@ -95,6 +82,12 @@ public abstract class Menu {
             this.setItem(menuItem, slot);
         }
         return menuItem;
+    }
+
+    public void setItems(MenuItem item, int... slots) {
+        for (int slot : slots) {
+            this.setItem(item, slot);
+        }
     }
 
     public MenuItem setItem(ItemStack item, int slot) {
@@ -138,6 +131,10 @@ public abstract class Menu {
 
     public void setBlockPlayerInventory(boolean blockPlayerInventory) {
         this.blockPlayerInventory = blockPlayerInventory;
+    }
+
+    public boolean isDisposable() {
+        return disposable;
     }
 
     public MenuHolder getHolder() {

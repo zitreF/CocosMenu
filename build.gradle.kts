@@ -21,11 +21,6 @@ repositories {
 
 dependencies {
     compileOnly ("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
-
-    val adventureVersion = "4.13.0"
-    api("net.kyori:adventure-api:$adventureVersion")
-    api("net.kyori:adventure-text-serializer-legacy:$adventureVersion")
-    api("net.kyori:adventure-text-serializer-gson:$adventureVersion")
     testImplementation("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
 }
 

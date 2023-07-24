@@ -1,6 +1,7 @@
 package me.cocos.menu.builder.impl;
 
 import me.cocos.menu.builder.Builder;
+import me.cocos.menu.data.MenuItem;
 import me.cocos.menu.helper.ChatHelper;
 import org.bukkit.Color;
 import org.bukkit.Material;
@@ -98,5 +99,9 @@ public final class ItemBuilder implements Builder<ItemStack> {
     public ItemStack build() {
         itemStack.setItemMeta(meta);
         return itemStack;
+    }
+
+    public MenuItem asMenuItem() {
+        return new MenuItem(this.build());
     }
 }
