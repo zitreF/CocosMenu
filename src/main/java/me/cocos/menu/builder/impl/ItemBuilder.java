@@ -64,6 +64,11 @@ public final class ItemBuilder implements Builder<ItemStack> {
         return this;
     }
 
+    public ItemBuilder withType(Material type) {
+        this.itemStack.setType(type);
+        return this;
+    }
+
     public ItemBuilder withAmount(int amount) {
         this.itemStack.setAmount(amount);
         return this;
