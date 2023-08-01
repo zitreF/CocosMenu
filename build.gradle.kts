@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "me.cocos"
-version = "2.6-SNAPSHOT"
+version = "2.6.1-SNAPSHOT"
 
 repositories {
     mavenCentral()
